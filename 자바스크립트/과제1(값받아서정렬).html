@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>오름차순 정렬하기</h1>
+  <form action="" method="get">
+    <input type="text" id="input" size="100" style="width: 50%;"><br/>
+    <button type="button" name="btnPress" id="btnPress">확인</button>
+    <div id='result' style="border: 1px solid red; width: 50%; height: 40px;"></div>
+  </form>
+</body>
+<script>
+  var btnPress = document.getElementById("btnPress")//버튼 객체 주소가 저장된다.
+  btnPress.addEventListener("click", () => { //화살표함수.
+    let x = document.getElementById("input").value;
+    let sor = []
+    sor = x.split(",")
+    sor = sor.map( item => parseInt(item)); // type : string -> Int
+    sorted1 = sor.toSorted((x,y) => (x - y))
+    console.log(sorted1)
+    document.getElementById("result").innerHTML= sorted1
+  });
+</script>
+</html>

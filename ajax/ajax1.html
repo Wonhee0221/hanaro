@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>ajax html</h1>
+
+  <div style="border : 1px solid red; width : 400px; height: 200px;" id="result"></div>
+
+  <button type="button" id="btnSend">비동기 호출</button>
+</body>
+</html>
+<script>
+  document.querySelector('#btnSend').addEventListener("click",()=>{
+    let xmlHttp = new XMLHttpRequest(); //통신을 담당하는 객체이다.
+    //onreadystatechange : 어떤 상태가 되었던 서버로부터 수신이 되면 여기에 전달된 함수를 호출한다.(자기호출)
+    xmlHttp.onreadystatechange = function(){
+      console.log(this.readyState, this.status, this.statusText);
+      if ( this.readyState ==4 && this.status==200){
+         //텍스트로 넘어오는걸 JSon객체로 바꿔준다.
+        let userinfo = JSON.parse(xmlHttp.responseText)
+        document.querySelector("#result").innerHTML = userinfo.name + "" + userinfo.phone + "" + userinfo.address;
+      }
+    }
+    xmlHttp.open("GET","http://127.0.0.1:8080/getUserInfo") // 127.0.0.1 이나 localhost나 똑같음
+    xmlHttp.send();
+  })
+    </script>
+
+  

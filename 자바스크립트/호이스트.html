@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>호이스트</h1>
+</body>
+</html>
+<script>
+  a= 100;
+  console.log("a = ",a);
+  var a;
+  console.log("a = ",a); //아까와 동일한 100이 출력된다. 여기서 새로만들지않고 이미만들어진 a를 참조한다
+  let msg = "안녕하세요";
+  if (true){
+    let msg = "Hello";
+  }
+  console.log(msg)
+</script>

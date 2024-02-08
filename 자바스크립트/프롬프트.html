@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>윤년 알아보기</h1>
+</body>
+</html>
+<script>
+  let x = prompt("궁금한 연도를 적으시오:", 2024);
+
+  if (x!=null){
+    if(x%4==0 && x%100!=0 || x%400 ==0 ){
+      alert(`${x}은 윤년 입니다`);
+    }
+    else{
+      alert(`${x}은 윤년이 아닙니다`)
+  }
+}
+  else{
+    alert(`취소를 선택하셨습니다.`)
+  }
+</script>
+
+<!-- 문제 : 연도 입력받아서 윤년여부를 판단하자.
+        4의 배수는 윤년
+        100의 배수는 윤년이 아님
+        400의 배수는 윤년임.
+ -->

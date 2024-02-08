@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>DOM객체접근</h1>
+  <h1 class="title">제목1</h1><br/>
+  <h1 class="title">제목2</h1><br/>
+  <h1 class="title">제목3</h1><br/>
+  <h1 class="title">제목4</h1><br/>
+</body>
+</html>
+<script>
+  //클래스로 받아와보기
+  let titles = document.getElementsByClassName("title")
+  titles[0].innerHTML = "css는 배열로 가져옵니다.1 ";
+  titles[1].innerHTML = "css는 배열로 가져옵니다.2  ";
+  titles[2].innerHTML = "css는 배열로 가져옵니다. 3 ";
+  titles[3].innerHTML = "css는 배열로 가져옵니다. 4";
+
+  let ids = ["title1","title2","title3","title4"];
+  let colors=["#ff0000","#f00ff0","#ff00ff","#ffff00"];
+  //1번
+  titles = document.querySelectorAll(".title1");
+  titles.forEach(element => {
+    console.log(element.innerHTML)
+  });
+
+  //태그를 가져와서 body 태그에 별도의 스타일을 주고 싶다.
+  // css - background-color : 스네이크 표기법
+  // 자바스크립트에서 - 는 카멜 표거법으로 바꿔서 써야한다
+  document.getElementsByTagName("body")[0].style.backgroundColor = "#dddd33" //body같이 하나만 있는 태그는 꼭 ("body")[0] 인덱스를 지정해줘야한다.
+</script>

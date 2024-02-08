@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+  <h1>헤더1</h1>
+  <h2>헤더2</h2>
+
+  <p>셀렉터1</p>
+  <p>셀렉터2</p>
+  <p>셀렉터3</p>
+  <p>셀렉터4</p>
+  <p>셀렉터5</p>
+  <p>셀렉터6</p>
+  <p>셀렉터7</p>
+  <p>셀렉터8</p>
+  <button type="button" id="btnAll">전체선택</button>
+  <button type="button" id="btnFirst">첫번째 요소</button>
+</body>
+</html>
+<script>
+  $(()=>{
+    $("#btnAll").click(function(){
+      //$("*").css("color","#ff4444"); //모든 태그 색깔이 바뀜.
+      $(this).css("color","#ff4444"); //현재 이벤트 발생한 객체에 대해서만 적용
+      //this가 화살표 함수안에서 객체에 대한 참조를 못갖고온다(vue)
+      //Jquery의 가장큰 문제점. 에러메세지를 안보여줌 ..... 
+      $(this).hide() //화살표 함수라서 안됌....이걸 바꿔주면 됌.
+
+
+    });
+    $("#btnFirst").click( ()=>{
+      console.log("##################") // 동작이 돌아가는 지 확인
+        $("p:first").css("background-color","#ff00ff")
+      });
+
+    // $(selector).hide(speed,callback) // $(selector).hide(실행시간, callback) 
+  })
+</script>

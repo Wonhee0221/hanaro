@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>async를 이용해 쉽게 비동기 함수 만들기</h1>
+</body>
+</html>
+<script>
+  //동기함수를 만듬
+  // function sigma(limit=10){
+  //   s= 0;
+  //   for(i=0; i<=limit; i++){
+  //     s+=i
+  //   }return s
+  // }
+  // console.log(sigma(100))
+  //async를 함수앞에 붙여주면 동기함수 => 비동기함수로 바뀜
+  async function sigma(limit=10){
+    if (limit <10 ){
+      throw "10이상의 값을 입력하세여" //reject 가 호출되는것아러 생각.
+      // throw 구문은 예외 처리도 해주만 return과 동일한 역할함.
+      // 스택을 정리하고 나온다.
+      // 함수만들 때 오류가 발생하면 return을 써라
+      // 생성자에서 객체 생성시 오류나면 return;구문 사용불가능하다......그래서 throw쓴다.
+      // 생성자 객채 생성 오류 체크하려면 throw를 사용한다. 
+    }
+    s= 0;
+    for(i=0; i<=limit; i++){
+      s+=i
+    }return s //resolve호출과 결과가 같다.
+  }
+  // promise함수가 되기때문에 then으로 값을 넘겨주어야한다.
+  // sigma(100)
+  // .then ( ( result ) => {
+  //   console.log(result)
+
+  // })
+async function main(){
+  sigma(9)
+  .then((r) =>{ console.log(r)})
+  .catch((e)=>{console.log("error", e)});
+
+  let result = await sigma(100); //이걸 밖에다 쓰면 에러가 난다. 왜냐면 async 안에 안쓰고 밖에 써서
+  console.log(result)
+  console.log("종료")
+}
+
+main();
+  
+
+</script>

@@ -1,0 +1,45 @@
+
+구조체 = > 클래스
+구조체 : 사용자가 만드는 데이터 타입
+
+let a;
+let name: string
+let kor : number
+let eng : number;
+let mat :number;
+let total : number
+
+// 스트럭이란걸로 그룹호ㅓㅏ하ㅏㅁ
+struct Student{
+let name: string
+let kor : number
+let eng : number;
+let mat :number;
+let total : number
+
+}
+struct weekpay{
+let name: string;
+let weektime : number;
+let per_pay : number;
+let total : number
+
+}
+struct STACK{
+  int [] stack ;
+  int top;
+}
+Push(STACK *pStack);
+
+class CStack{
+  int [] stack =new int[5] ;
+  int top= -1;
+  Push() {this}
+}
+
+//스프링부터 오면서
+// final - const 다른거다.
+
+// 객체를 생성하면 => 변수는 객체마다 만들어진다.
+//                  => 메서드는 하나만 만들고(this:객체주소를 담아서 보낸다.)
+

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>함수표현식</h1>
+  <!-- 옛날방식 -->
+  <button type="button" onclick="onCall()">옛날방식 이벤트핸들러</button>
+   <!-- 현재방식 -->
+   <button type="button" id="btnPress">현재방식 이벤트핸들러</button>
+</body>
+</html>
+<script>
+  // window.onload = 함수를 전달, html문서가 모두 메모리로 로딩 된 후 여기에 전달된 함수를 호출하기로한다. 
+  window.onload = function(){
+  var btnPress = document.getElementById("btnPress")//버튼 객체 주소가 저장된다.
+  // 함수의 매개변수로 함수를 전달 할 수있다.
+  btnPress.addEventListener("click", function(){
+    alert("현재 이벤트 핸들러")
+  });
+  btnPress.addEventListener("click", () => { //화살표함수.
+    alert("현재 이벤트 핸들러222")
+  });
+}
+// onCall은 왜 window.onload 안에 안담는가?
+  function onCall(){
+    alert("옛날 이벤트 핸들러");
+  }
+  
+
+</script>

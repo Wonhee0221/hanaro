@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <form method="get" action="" name="myform">
+    이름 : <input type="text" name="username"/> <br/>
+    전화번호 : <input type="text" name="userphone"/> <br/>
+    성별 : 
+    남자 <input type="radio" name="gender" checked value="M"/>&nbsp;
+    여자 <input type="radio" name="gender" value="F"/> <br/>
+    나이 : 
+    <input type="radio" name="age" value="1"/>10대이하 &nbsp;
+    <input type="radio" name="age" value="2" checked/>10~20 &nbsp;
+    <input type="radio" name="age" value="3"/>20~30 &nbsp;
+    <input type="radio" name="age" value="4"/>30~40 &nbsp; <br/>
+
+    좋아하는 것 :
+    <input type="checkbox" name="language" id="" value="1">자바 &nbsp;
+    <input type="checkbox" name="language" id="" value="2">c &nbsp;
+    <input type="checkbox" name="language" id="" value="3">python &nbsp;
+    <input type="checkbox" name="language" id="" value="4">html &nbsp;
+    <br/>
+    <select name="fruit" id="">
+      <option >---선택하세요----</option>
+      <option value="1">사과</option>
+      <option value="2">귤</option>
+      <option value="3">오렌지</option>
+      <option value="4">배</option>
+    </select>
+    <br/>
+
+    
+    <!--속성에서 id 는 jQuary할 때 사용 하기 때문에 사용함-->
+    <textarea name="introduce" id="" cols="30" rows="10">보내는값</textarea>
+    <button type="button" onclick="goSend()" >보내기</button>
+  </form>
+    
+</body>
+</html>
+<script>
+  function goSend(){
+    //폼을 생성하려면?
+    // 1. 폼에 대한 객체 참조를 가지고 와야한다.
+    var frm = document.myform; // 폼 객체를 가지고 온다.
+    frm.submit(); //서버로 전송한다는 것이다.
+  }
+</script>

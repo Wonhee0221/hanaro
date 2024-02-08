@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>클래스</h1>
+</body>
+</html>
+<script>
+  class Person{
+    // 생성자 -한개만 만들수 있다, 오버로딩 없음, 하지만 매개변수 기본값을 사용하면 다양한 생성방식을 만들수있다.
+    // 생성자 - 클래스명이 아니고, constructor라는 이름을 가져야한다.
+    name = "홍길동";
+    age = 23
+    constructor(){
+      console.log("생성자")
+    }
+  }
+
+  let per1 = new Person();
+  console.log(per1.name);
+  console.log(per1.age)
+</script>
+

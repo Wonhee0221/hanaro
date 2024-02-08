@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>겍체에 매서드 추가하기  </h1>
+  <p>json 객체 저장방식이 키와 값 형태로 저장ㅎ나는데 값에 함수주소도 저장이 가능하다.
+    멤버 키에 접근하려면 this를 사용해야한다. (화살표함수는 사용못한다는 얘기)
+  </p>
+</body>
+</html>
+<script>
+  let persons = {
+    name : "홍길동",
+    age : 23,
+    phone : "010-2344-4232",
+    setValue: function( name="", age=0, phone = ""){
+      this.name =name;
+      this.age =age;
+      this.phone =phone;
+    },
+    display : function(){
+      console.log(this.name,this.age,this.phone)
+    },
+    // getName : () =>{ return persons.name},
+    line : ()=>{console.log("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ") }
+
+  };
+  persons.display();
+  persons.setValue("장길산",33,'010-4444-1111');
+  persons.line();
+  persons.display();
+  // persons.getName();
+
+  let students = { __proto__:persons, "kor": 90,"eng": 50,"math": 32};
+  students.display()
+  console.log(students);
+  console.log(students.kor,students.eng,students.math);
+</script>

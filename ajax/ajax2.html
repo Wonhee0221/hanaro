@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>ajax html(fetch사용버전)</h1>
+
+  <div style="border : 1px solid red; width : 400px; height: 200px;" id="result"></div>
+
+  <button type="button" id="btnSend">비동기 호출</button>
+</body>
+</html>
+<script>
+  //패치는 프라미스 객체
+  //promise가 일을 종료할때까지 기다린다. then 구문
+  document.querySelector('#btnSend').addEventListener("click",()=>{
+    fetch("http://127.0.0.1:8080/getUserInfo")
+    .then((res)=>{
+      console.log(res); //Response 타입으로 옴 => jsonㅏㅁ수도 있고, 정보도 있다.
+      return res.json();//데이터만 다음 then 구문으로 전달됨.
+    })
+    .then((data) =>{
+      //데이터를 어떤형태로 받아오는지 확인하기.
+      //문자열로 주지 않고 JSON객체로 전환 시켜온다.
+      console.log(typeof(data));
+      alert(data.name)
+    })
+    .catch((error)=>{
+      console.log(error);
+    })
+  })
+    </script>
+
+  

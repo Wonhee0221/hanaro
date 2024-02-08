@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+  <h1>이펙트 연습</h1>
+  <div id="result"  style="height: 100px; width: 200px; border: 1px solid red;"></div>
+  <button type="button" id="btnShow">나타났다 사라짐</button>
+</body>
+</html>
+<script>
+  $( ( ) =>
+  {
+    $("#btnShow").click(()=>{
+      $("#result").hide("slow",function(){
+        $(("#result")).show("slow") //다시 나타나게 하는것 $(this).show("slow") 이렇게도 사용가능
+      }); // 토글 : 나타났다 사라졌다 하는것.
+    });
+
+    
+    // $(selector).animate({params},speed,callback); //params는 json이다.
+
+  })
+</script>

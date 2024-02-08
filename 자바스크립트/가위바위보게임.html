@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1 style="text-align: center;">게임시작</h1>
+  <div style="text-align: center;">
+  <button type="button" onclick="goChange(this)"  id="1" style="width: 120px;">주먹</button>
+  <button type="button" onclick="goChange(this)"  id="2" style="width: 120px;">가위</button>
+  <button type="button" onclick="goChange(this)"  id="3" style="width: 120px;">보</button>
+  <div id="result"></div>
+  <div id="result1"></div>
+  </div>
+  
+</body>
+</html>
+<script>
+  let cnt = 0;
+  let win = 0;
+  let lose = 0;
+  function goChange(me){
+    let rand = Math.ceil(Math.random()*3)
+    cnt +=1
+    let com = ''
+    let pic_id = event.target.id;
+    let youpic = event.target.innerText;
+    let titles = ["","주먹","가위","보"];
+    
+    reultHtml = getresult(rand, pic_id)
+    document.getElementById('result').innerHTML = `컴퓨터는 ${titles[rand]}를 냈고 당신은 ${youpic}를 내서 ${reultHtml}`
+    document.getElementById('result1').innerHTML = `당신의 판수는 ${cnt}판 승리는 ${win}번 패배는 ${lose}번 입니다. 승률은 ${Math.ceil((win/cnt)*100)} % 입니다.`
+  }
+  function getresult(computer, person){
+    if (computer == person){
+      reultHtml = "비겼습니다."
+    }else if ( (computer == 2 && person ==1) || (computer == 1 && person ==3) || (computer == 3 && person ==1)){
+      reultHtml = "이겼습니다."
+      win+=1
+    }else{
+      reultHtml = "졌습니다."
+      lose += 1
+    };
+    return reultHtml;
+  }
+</script>

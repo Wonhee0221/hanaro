@@ -1,0 +1,12 @@
+게시판 만들기
+
+board_list
+board_view
+board_write
+
+아래처럼 하지말고 위에처럼해야함.
+board
+  ㄴ list
+  ㄴ view
+  ㄴ write
+

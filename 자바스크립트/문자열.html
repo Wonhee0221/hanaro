@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>문자열</h1>
+</body>
+</html>
+<script>
+  //JSP나 ASP, PHP객체를 자바스크립트에 저장가능. 근데 반대는 불가능
+  // let userId= '<%=userId%>'
+  let s1 = "Hello";
+  let s2 = '홍길동';
+  let s3 = 'I like star\n'+ 'red star\n';
+
+  let s4 = ` 
+  I like star
+  red star
+  blue star
+  ${s1} ${s2} 
+  `
+  console.log(s4)
+</script>

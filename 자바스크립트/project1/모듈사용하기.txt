@@ -1,0 +1,22 @@
+cmd 들어가서 폴더이동
+mkdir hello
+cd hello
+npm init
+
+
+{
+  "name": "project1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module", < = 이부분 꼭 추가해주기.
+  "author": "",
+  "license": "ISC"
+}
+
+모듈을 사용하는 이유>? 
+const fs = require('fs'); //이전 표현식
+import fs from 'fs';

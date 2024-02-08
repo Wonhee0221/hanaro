@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>반복문 연습히가</h1>
+</body>
+</html>
+<script>
+  // for 문하고 while문 차이점은 for문 몇번 수행하고 그만 둬야할지 알수 있는경우
+  // while문은 특정 조건을 만족할동안, 때로는 한번도 수행이 안될 수가 있어서 파일을 읽거나 디비 읽을때 많이사용
+  //foreach구문이 나오면서 이걸 제일 많이사용한다
+  let i, result;
+  result = 0;
+  for(i=1; i<=10; i++){
+    result +=1;
+  }
+  console.log(result)
+  i=1;
+  result=0
+  while(i<=10){
+    result+=1
+    i++
+  }
+  console.log(result)
+
+  //배열이 있을때
+  let flowers = ['작약','천일홍','백일홍','모란','목련','장미']
+  console.log(flowers[3]);
+  for(i=0; i<=flowers.length; i++){
+    console.log(flowers[i]);
+  }
+  //in연산자
+
+  for(i in flowers){
+    console.log(i,flowers[i])
+  }
+    //of연산자
+  for(item of flowers){
+    console.log(i++,item)
+  }
+  // 특별한 유형의 함수 - > 람다 forEach 함수 배열 객체 추가되었음
+  // 배열의 요소하나마다 함수를 호출해준다.
+  //함수를 개발자가 만들지만 호출자는 시스템이다.
+  //forEach구문에 전달해야 할 함수는 두개의 매개변수 배열의 요소,인덱스
+  //가 있어야하고 반환값은 없는 함수를 전달해줘야한다. 함수형 언어들의 기본문법
+  // 자바 -> 람다,스트림, 파이썬 -> 람다, 코틀린, GO, 모던 스크립트 (화살표함수)
+  // 임시로 쓰고 버리는 함수 => 메모리 운영에 유연성을 준다.
+
+  //배열 객체만 사용 가능하다
+  console.log('--------forEach---------')
+  flowers.forEach((item,index) =>{
+    console.log(index,item)
+  })
+</script>

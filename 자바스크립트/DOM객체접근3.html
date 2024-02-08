@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>DOM객체접근</h1>
+  값 1 : <input type="text" name="number" id=""><br/>
+  값 2 : <input type="text" name="number" id=""><br/>
+  값 3 : <input type="text" name="number" id=""><br/>
+  값 4: <input type="text" name="number" id=""><br/>
+  값 5: <input type="text" name="number" id=""><br/>
+  값 6 : <input type="text" name="number" id=""><br/>
+  값 7: <input type="text" name="number" id=""><br/>
+  값 8 : <input type="text" name="number" id=""><br/>
+  값 9: <input type="text" name="number" id=""><br/>
+  값 10 : <input type="text" name="number" id=""><br/>
+  <button type="button" id = "btnAdd"> 계산하기 </button>
+
+</body>
+</html>
+<script>
+  //클래스로 받아와보기
+  btn = document.getElementById("btnAdd")
+  btn.addEventListener("click", () => {
+    let numbers = document.getElementsByName("number");
+    let sum = 0;
+    numbers.forEach(item => {
+      sum += parseInt(item.value)
+    });
+    alert(sum)
+    })
+  
+
+  //태그를 가져와서 body 태그에 별도의 스타일을 주고 싶다.
+  // css - background-color : 스네이크 표기법
+  // 자바스크립트에서 - 는 카멜 표거법으로 바꿔서 써야한다
+</script>

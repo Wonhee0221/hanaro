@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>프라미스 체인</h1>
+</body>
+</html>
+<script>
+  new Promise((resolve, reject)=>{
+    //setTimeout ( 함수주소 , 시간 - 밀리초) 밀리초가 지나면 함수를 딱 한번만 호출한다. 그래서 화살표 함수 사용가능
+    setTimeout(()=>{
+      resolve(10);
+    }, 2000 )
+  })
+  .then ( ( result ) => {
+    console.log("result:" , result);
+    return result + 10;
+  })
+  .then ( ( result ) => {
+    console.log("result:" , result);
+    return result + 10;
+  })
+  .then ( ( result ) => {
+    console.log("result:" , result);
+  })
+</script>

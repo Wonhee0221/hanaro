@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>쿼리셀렉터</h1>
+
+  <p>쿼리셀렉터 p태그 </p>
+  <p>쿼리셀렉터 p태그 </p>
+  <p>쿼리셀렉터 p태그 </p>
+
+
+  <button type="button" id="btnPress1">p태그에 색상부여하기</button>
+</body>
+</html>
+
+<script>
+  window.onload = ()=>{
+    //querySelector는 한개만 가져옴, #id
+    document.querySelector("#btnPress1").addEventListener("click",()=>
+    {
+      document.querySelector("p").style.color="#ff0000"; //첫번째꺼 하나만
+      document.querySelectorAll("p")[0].style.color="#ffff00"; 
+
+      let p1 = document.querySelector("p"); //첫번째꺼 하나만 단수로
+      console.log(p1)
+      let p2 = document.querySelectorAll("p"); //배열로들고온다. ->첨자 생략못함.
+      console.log(p2)
+      p2.forEach((item) =>{
+        item.style.color = "magenta"
+      }
+      )
+      let p3 = document.getElementsByTagName("p"); //가져오는게 다름 
+      console.log(p3)
+
+      //getElementsByTagName 와 querySelectorAll차이
+      //getElementsByTagName = HTMLCollection을 사용. forEach 나오기 전에 구문이라 forEach가 안먹음
+      //querySelectorAll = NodeList 사용. 
+      //안에 사용하는 매소드들이 다르기때문에 잘알아보고 사용해야한다.
+
+
+    })
+  }
+</script>

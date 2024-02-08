@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .right-align {
+      text-align: right;
+    }
+
+    .center-align {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>주급계산하기</h1>
+  <Table>
+    <thead>
+      <tr>
+        <td>이름</td>
+        <td>시간</td>
+        <td class="center-align">시간당급여액</td>
+        <td class="right-align">주급</td>
+      </tr>
+    </thead>
+    <tbody id="tbody">
+
+    </tbody>
+  </Table>
+
+</body>
+</html>
+<script>
+  let data = [
+    {"name":"홍길동", "time" : 40, "week_money" : 10000},
+    {"name":"임꺽정", "time" : 30, "week_money" : 20000},
+    {"name":"장길산", "time" : 20, "week_money" : 20000},
+    {"name":"김미영", "time" : 15, "week_money" : 30000}
+    ]
+  window.onload = load();
+
+  function load(){
+    let tbody = document.querySelector("#tbody");
+    data.forEach((item) => {
+      let row = tbody.insertRow(tbody.rows.length);
+      let cell1 = row.insertCell(0)
+      let cell2 = row.insertCell(1)
+      let cell3 = row.insertCell(2)
+      let cell4 = row.insertCell(3)
+
+      cell1.innerHTML = item.name;
+      cell2.innerHTML = item.time;
+      cell3.innerHTML = item.week_money.toLocaleString(); //3자리수 마다 콤마(,) 삽입해줌
+      cell4.innerHTML = getPay(item.time, item.week_money).toLocaleString()
+    })
+  }
+  function getPay(time,pay){
+    base_pay = time * pay;
+    over_pay = 0;
+    if (time >= 20)
+        over_pay = (time-20)*pay /2
+
+    return base_pay +over_pay
+  }
+</script>

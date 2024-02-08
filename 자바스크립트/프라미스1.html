@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>promise(동기함수=>비동기함수로 바꿔준다)</h1>
+  <p>
+    java에서 함수를 멀티스레드로 만들려면 클래스 만들고 runable 인터페이스를 구현하거나
+    Thread를 상속받거나 해줘야한다. 자바스크립트는 멀티스레드를 지원하지않는다.
+    그래서 Promise를 사용한다.
+  </p>
+</body>
+</html>
+<script>
+  //function(resolve,reject) 이 안에 들어가는 resolve,reject는 아무 변수로 해도된다. 매개변수명이라 상관없음.
+  let promise = new Promise(function(resolve,reject){
+    //특정 시간이 지나면 함수호출이 된다.
+    //1000이 1초 , 즉 1초뒤에 함수호출이 된다.
+    //지금 들어가는 9는 아무 의미없음.
+    // setTimeout( ()=>{resolve(9)},1000);
+    setTimeout( ()=>{reject("통신에러")},1000); //통신에러 받아보기, reject를 넣으면 아래 .catch부분으로 자동넘어감, 위에건 then으로감
+  })
+  // promise.then( ) //resolve가 호출될때 보내는 value를 매개변수로 가져오는 함수
+  // .catch( ) //reject가 호출될때 보내는 error를 매개변수로 가져오는 함수
+  // .finally( ) // 마무리하고 싶을 때 보내는 함수 던져주기.
+  // return값이 안나옴.
+  promise.then( (value) => console.log(value))
+  .catch((error)=> console.log( error ))
+  .finally (()=> console.log("ending"));
+
+  console.log("complete"); // 실행해보면 얘가 먼저나오고 promise가 나중에 나옴 실행해봐.
+  // console.log(promise)
+</script>

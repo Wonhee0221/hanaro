@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<br lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script  src="https://code.jquery.com/jquery-3.7.1.js"
+  integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+  crossorigin="anonymous"></script>
+</head>
+<br>
+  <h2>값 읽고 쓰기</h2>
+  <!-- 사용자 화면에 안보이고 서버로 정보는 전송 : 비밀리에 보내야 하는 값을 저장-->
+  <input type="hidden" name="userid"></br>
+  <input type="text" name="username"></br>
+  <input type="text" name="userphone"></br>
+
+  나이 </br>
+  <input type="radio" name="age" id="" value="1">10대</br>
+  <input type="radio" name="age" id="" value="2">20대</br>
+  <input type="radio" name="age" id="" value="3">30대</br>
+  <input type="radio" name="age" id="" value="4">40대</br>
+  <input type="radio" name="age" id="" value="5">50대</br>
+  <input type="radio" name="age" id="" value="6">60대</br>
+
+  사용가능한 언어 </br>
+  <input type="checkbox" name="language" id="" value="1">java</br>
+  <input type="checkbox" name="language" id="" value="2">python</br>
+  <input type="checkbox" name="language" id="" value="3">nodejs</br>
+  <input type="checkbox" name="language" id="" value="4">c</br>
+  <input type="checkbox" name="language" id="" value="5">c++</br>
+  <input type="checkbox" name="language" id="" value="6" checked>c#</br>
+
+
+  좋아하는 가수는 </br>
+  <select name="singer" id="">
+    <option value="">==선택하세요==</option>
+    <option value="1">이찬원</option>
+    <option value="2">임영웅</option>
+    <option value="3">아이유</option>
+    <option value="4">조승연</option>
+    <option value="5">태연</option>
+  </select></br>
+
+  소개</br>
+  <textarea name="intro" id="" cols="30" rows="10">안녕하세요</textarea>
+
+  <button type="button" id="btnOutput">값 출력하기</button>
+</body>
+</html>
+
+<script>
+  $(() =>{
+    let obj1 = $("input[type=hidden][name=userid]"); // input 객체 가져오기
+    obj1.val('conan')
+    console.log(obj1)
+
+    $("input[type=text][name=username]").val('홍길동'); // input 객체 가져오기
+    $("input[type=text][name=userphone]").val('010-4234-1224'); // input 객체 가져오기
+
+    //radio선택하기 -- 인덱스 : eq
+    // prop : 객체의 속성을 변경하기 위한 함수다 (속성, 변경할 값)
+    $("input[type=radio][name=age]").eq(2).prop("checked",true)
+    // Checkbox는 여러개 선택 가능. radio는 단 한가지만 선택가능
+    $("input[type=checkbox][name=language]").eq(2).prop("checked",true);
+    $("input[type=checkbox][name=language]").eq(4).prop("checked",true);
+
+
+    $("select[name=singer]").val("4");
+    $('textarea[name=intro]').val("jquery를 배워봅시다\njquery를 배워봅시다");
+
+    $("#btnOutput").click(()=>{
+      console.log($("input[type=hidden][name=userid]").val());
+      console.log($("input[type=text][name=username]").val());
+      console.log($("input[type=text][name=userphone]").val());
+
+      //radio
+      let age = $("input[type=radio][name=age]:checked").val();
+      console.log(age)
+
+      let select = "";
+      let language =  $("input[type=checkbox][name=language]:checked");
+
+      language.each(function(){
+        select += $(this).val()+ ",";
+      });
+
+      console.log( select );
+      console.log( $("select[name=singer]").val());
+      console.log( $('textarea[name=intro]').val());
+
+
+    })
+
+
+  })
+</script>

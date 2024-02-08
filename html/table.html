@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table{
+      margin-top: 30px;
+      margin: auto; /* 테이블 중앙 정렬 */
+    }
+    table,th,td{
+      border-top: 1px solid red;
+      border-left: none;
+      border-bottom: 1px solid red;
+      border-right: none;
+      border-collapse: collapse;
+    }
+    td, tr{
+      padding: 5px 10px; /*셀과 셀의 간격을 지정한다
+                          top right bottom left 방향으로 진행*/
+    }
+  </style>
+</head>
+<body>
+  <table>
+    <colgroup>
+      <col style = "width: 8%">
+      <col style = "width: 78%">
+      <col style = "width: 14%">
+    </colgroup>
+    <thead>
+      <tr>
+        <th>이름</th>
+        <th colspan="2">정보</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td rowspan="3">홍길동</td>
+        <td>나이</td>
+        <td>3</td>
+      </tr>
+      <tr>
+        <td>전번</td>
+        <td>0101010101</td>
+      </tr>
+      <tr>
+        <td>주소</td>
+        <td>관악구</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>상수</h1>
+</body>
+</html>
+<script>
+  const myBirth = "1999.213.321";
+  // myBirth = "22,323,1"  -> 에러발생함. 상수에다가 참조 변수를 넣는경우
+  console.log(myBirth);
+
+  const person = { name: "홍길동", age : 12, address: "서울시 관악구"}; // JSON객체]]
+  console.log(person);
+
+  person.name = "well";
+  console.log(person);
+  
+  person = { name: "임꺽정", age : 12, address: "서울시 관악구"}; // JSON객체]] 
+  // 객체 자체의 개입은 안되지만, 객체안의 요소들은 값을 바꾸는 건 가능하다
+  // console.log(person)
+
+</script>

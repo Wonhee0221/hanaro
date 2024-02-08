@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="mycanvas" style="width: 400px; height: 400px;"></canvas>
+</body>
+</html>
+
+<script>
+  var ctx = document.getElementById("mycanvas").getContext("2d");
+  //Canvas 개체에 그림을 그리기 위한 도구들을 모두 가져온다
+  ctx.fillStyle ='red'; //영역에 대한 색상
+  ctx.fillRect(0,0,200,200);
+ // 위에 지정한 색으로 꽉채운 사각형을 그려라
+</script>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>프라미스 2</h1>
+</body>
+</html>
+<script>
+  new Promise((resolve, reject) =>{
+    i = 1;
+    s = 0;
+    limit = 100;
+    if (limit < 100){
+      reject("100보다 큰수를 입력하세요")
+    };
+    for (i=1; i<= limit; i++){
+      s+=i
+    };
+    //결과를 반환하고 싶으면
+    resolve(s); //resolve에서 보낸 결과값을 받아서 then에서 전달하는 함수의 매개변수에 전달된다.
+  } )
+  .then( (res) => {
+    console.log("합계:",res)
+  })
+  .catch ( (error) =>{
+    console.log(error)
+  })
+
+  console.log("complete")
+
+  // //fetch 함수
+  // fetch(
+  //   url, //원격 URL
+  //   {
+  //   method: "POST", // *GET, POST, PUT, DELETE 등 / POST는 보낼 데이터가 많을때(insert), put은 update, delet는  delet
+  //   mode: "cors", // no-cors, *cors, same-origin / 이건 우리가 결정안함, 백엔드가 결정함.
+  //   cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached / 기본은 캐쉬를 안함 
+  //   credentials: "same-origin", // include, *same-origin, omit
+  //   headers: { //내가 보낼 데이터의 정보값을 보내줌. 
+  //     "Content-Type": "application/json", //json으로 보낼꺼야!
+  //     // 'Content-Type': 'application/x-www-form-urlencoded',
+  //     // 토큰 인증방식을 할때 아래방식을 사용생각보다 중요함.
+  //     // "Authorization" : 'Bearer 토큰' 
+  //   },
+  //   redirect: "follow", // manual, *follow, error
+  //   referrerPolicy: "no-referrer", // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
+  //   //데이터를 보내는것
+  //   body: JSON.stringify(data), // body의 데이터 유형은 반드시 "Content-Type" 헤더와 일치해야 함
+    
+  // });
+</script>

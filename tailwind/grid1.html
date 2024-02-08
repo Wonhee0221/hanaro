@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div{
+      border: 1px solid red;
+    }
+    .container{
+      display: grid; /* 외부에 있는 div태그의 display속성이 flex여야한다. */
+      /* flex-direction: row; */
+      grid-template-columns: 200px 200px 200px;
+      grid-template-rows: 200px 200px 200px;
+    }
+    .item{
+      width: 200px;
+      border: 1px solid blue;
+    }
+  </style>
+</head>
+<body>
+  <h1>flex</h1>
+  <div class="container">
+    <div class="item">grid1</div>
+    <div class="item">grid2</div>
+    <div class="item">grid3</div>
+    <div class="item">grid4</div>
+    <div class="item">grid5</div>
+    <div class="item">grid6</div>
+    <div class="item">grid7</div>
+  </div>
+</body>
+</html>

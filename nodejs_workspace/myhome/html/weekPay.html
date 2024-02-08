@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <form id="myform">
+    name : <input type="text" name="name" id="name"> <br>
+    work_time : <input type="text" name="work_time" id="work_time"> <br>
+    per_pay : <input type="text" name="per_pay" id="per_pay"> <br>
+    <button type="button" id="btnAdd">계산</button>
+  </form>
+<div id="result"></div>
+</body>
+</html>
+<script>
+  // window.onload= ()=>{
+  //   document.getElementById("btnAdd").addEventListener("click",()=>{
+  //     //폼태그가 이름을 가질수 있고 id를 가질수있음 근데 둘다없는경우
+  //     // let frm = document.forms[0]
+  //     let frm = document.getElementById("myform")  // 버전상관없이가능, form에 id를 줘야함,
+  //     frm.action = "/weekpay_result" // 서버에서 응답할 url 지정
+  //     frm.method = "GET" //서버전송방법, 안쓰면 무조건 겟방식.
+  //     frm.submit(); // 서버로 전송하기
+  //   })
+  // }
+  // weekpay_proc/tom/222/222 방식으로 나감
+  window.onload = () => {
+      document.getElementById("btnAdd").addEventListener("click", () => {
+        axios.get('/weekpay_proc', {
+          params: {
+            "name": document.querySelector("#name").value,
+            "work_time": document.querySelector("#work_time").value,
+            "per_pay": document.querySelector("#per_pay").value
+          }
+        })
+          .then(function (response) {
+            // Handle the response here (if needed)
+            return response;
+          })
+          .then((response) => {
+            console.log(response);
+            let data = response.data;
+            document.querySelector("#result").innerHTML=`${data.name}님의 주급은  ${data.weekpay}입니다`;
+          })
+          .catch(function (error) {
+            // Handle errors here
+            console.error(error);
+          });
+      });
+    }
+</script>

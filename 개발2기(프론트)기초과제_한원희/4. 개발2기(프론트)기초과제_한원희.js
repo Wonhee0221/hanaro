@@ -66,7 +66,6 @@ class Queue extends Collection {
     this._arr.push(data);
     return this;
   }
-
   dequeue() {
     return this._arr.shift();
   }

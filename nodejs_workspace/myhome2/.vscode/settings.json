@@ -1,0 +1,7 @@
+{
+  "zenMode.hideLineNumbers": false,
+  "git.branchRandomName.enable": false,
+  "git.ignoredRepositories": [
+    "node_modules"
+  ]
+}

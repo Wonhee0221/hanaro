@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    th {
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div id="pay_table"></div>
+  <div id="total"></div>
+</body>
+<script>
+  window.onload = () => {
+    const jsonData = {
+      "base_time": 20,
+      "list": [
+        {"id": 1, "username": "홍길동", "work_time": 40, "per_pay": 10000},
+        {"id": 2, "username": "송민헌", "work_time": 20, "per_pay": 20000},
+        {"id": 3, "username": "장길산", "work_time": 30, "per_pay": 30000},
+        {"id": 4, "username": "임꺽정", "work_time": 10, "per_pay": 40000},
+        {"id": 5, "username": "강민구", "work_time": 30, "per_pay": 10000}
+      ]
+    }
+
+    const resultsElement = document.getElementById("pay_table");
+
+    // JSON 데이터를 기반으로 테이블 생성
+    let total = 0;
+    function createTable(jsonData) {
+      const table = document.createElement("table");
+      const thead = document.createElement("thead");
+      const tbody = document.createElement("tbody");
+
+      // 테이블 헤더 생성
+      const headerRow = document.createElement("tr");
+      const headerCells = ["번호", "이름", "근무시간", "시간당급여액", "기본액", "초과수당", "합계", "세액", "실지불액"];
+      headerCells.forEach(headerCell => {
+        const th = document.createElement("th");
+        th.textContent = headerCell;
+        headerRow.appendChild(th);
+      });
+      thead.appendChild(headerRow);
+
+      jsonData.list.forEach((item) => {
+        const row = document.createElement("tr");
+
+        // 기본액 계산: 근무시간 * 시간당급여액
+        let baseAmount = parseInt(item.work_time) * parseInt(item.per_pay);
+        // 초과수당 계산: max(0, 근무시간 - base_time)
+        let overtimeAllowance = Math.max(item.work_time - jsonData.base_time, 0) * item.per_pay * 0.5;
+        // 합계 계산: 기본액 + 초과수당
+        let totalAmount = parseInt(baseAmount) + parseInt(overtimeAllowance);
+        // 세액 계산: 합계 * 3.3%
+        let taxAmount = Math.floor(parseInt(totalAmount) * 0.033);
+
+        // 실지불액 계산: 합계 - 세액
+        let netAmount = totalAmount - taxAmount;
+
+        // 각 셀에 데이터 추가
+        const cellsData = [item.id, item.username, item.work_time, item.per_pay, baseAmount, overtimeAllowance, totalAmount, taxAmount,netAmount];
+        cellsData.forEach((data, index) => {
+          const cell = document.createElement("td");
+          cell.textContent = index > 1 ? data.toLocaleString() : data;;
+          cell.style.textAlign = data != item.username ? "right" : "left";
+          row.appendChild(cell);
+        });
+
+        // 테이블에 행 추가
+        tbody.appendChild(row);
+              // 총합계 계산 및 표시
+        total += netAmount;
+        document.getElementById("total").innerHTML = "총 지불액: " + total.toLocaleString();
+        // 테이블을 결과 엘리먼트에 추가
+        resultsElement.appendChild(table);
+      });
+
+      table.appendChild(thead);
+      table.appendChild(tbody);
+
+
+    }
+
+    createTable(jsonData);
+  }
+
+</script>
+</html>

@@ -1,0 +1,70 @@
+<!-- filesend3.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- Axios cnd 서비스 사용 -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <h1>Ajax로 파일 전송하기.</h1>
+  <form name="myform" id="myform" action="/filesave2" method="post" enctype="multipart/form-data" >
+    commnet : <input type="text" name="comment" id="comment"> <br>
+    file : <input type="file" name="file" id="file"><br>
+    <!-- file : <input type="file" name="file" id="file"><br>
+    file : <input type="file" name="file" id="file"><br> -->
+    <button id="btnSend" type="button">전송</button>
+  </form>
+</body>
+</html>
+<script>
+  window.onload = ()=>{
+    document.querySelector("#btnSend").addEventListener("click",async ()=>{
+      //formData(폼객체) => 파일로 전송하기 위한 formData 객체를 만들어야한다.
+      // document.myform ; //name 속성일때
+      // document.forms[0] ; // 문서에 form 태그 를 여러번 쓸경우
+      // 각 폼객체 관리용 배열이 존재한다. document.forms 배열에 폼객체 정보가 저장되어있다.
+      // document.querySelector("#myform")
+      //  jquery로 접근할 때는 $("#myform")[0]; jquery가 id로 객체접근할때
+      // 항상 배열임 그래서 인덱스 생략못함,.
+      let formData = new FormData(document.getElementById("myform"));
+      console.log(formData)
+      for (let key of formData.keys()){
+        console.log(key,formData.get(key))
+      }
+      // 어차피 반환값이 json임
+      // axios({
+      //   url:"/filesave2",
+      //   method:"POST",
+      //   data:formData,
+      //   headers:{"Content-Type": "multipart/form-data"}
+      // })
+      // .then((res) => {
+      //   alert(res.data.result);
+      // }).catch(err => {
+      //   alert(err)
+      // });
+      console.log(document.querySelector('#file').files)
+      // const {data} = await axios.post('/filesave1',{
+      //   comment: document.querySelector('#comment').value,
+      //   file : document.querySelector('#file').files
+      // },
+      // {
+      //   headers: { "Content-Type": "multipart/form-data" }
+      // })
+
+      const {data} =await axios({
+        url:"/filesave2",
+        method:"POST",
+        data:formData,
+        headers:{"Content-Type": "multipart/form-data",
+                  "Authorization":"Bearer api token"}
+      })
+      console.log(data)
+      alert(data)
+    })
+  }
+</script>
+

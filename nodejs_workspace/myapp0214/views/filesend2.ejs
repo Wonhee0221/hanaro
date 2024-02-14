@@ -1,0 +1,20 @@
+<!-- filesend2.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>파일 여러개 전송하기</h1>
+  <form action="/filesave2" method="post" enctype="multipart/form-data" >
+    commnet : <input type="text" name="comment" id="comment"> <br>
+    file : <input type="file" name="file" id="file"><br>
+    file : <input type="file" name="file" id="file"><br>
+    file : <input type="file" name="file" id="file"><br>
+    <button id="btnSend">전송</button>
+  </form>
+</body>
+</html>
+

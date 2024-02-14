@@ -81,10 +81,10 @@ app.post("/post",(request,response)=>{
 // 스프링부트의 경우 @RequestBody = > JSon 을 처리하고자 할때
 //  x-www-form-urlencoded는 그냥받음
 /*
- get : header에 모든 정보를
+ get : header에 모든 정보를(url방식 2개.)
       1. add?x=4&y=5  => query
       2. add/4/5      => param
- post : header에 간단한 url말고는 안보낸다.
+ post : header에 간단한 url말고는 안보낸다. body에 데이터를 전송한다.
         1. multipart/form-data : 파일 업로드시 form태그의 post + enctype="multipart/form-data"
         2. x-www-form-urlencoded : form 태그의 post
         3. json 방식이 있다. : 데이터를 json형태로 전송한다. 직접 json 형태로 데이터를 만들어야한다.

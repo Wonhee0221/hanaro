@@ -10,20 +10,23 @@
       width: 100%;
     }
 
-    th, td {
-      border: 1px solid #dddddd;
+    td {
+      border: 1px solid #000000;
       text-align: left;
       padding: 8px;
     }
 
     th {
       text-align: center;
+      border: 1px solid #8b8181;
+      padding: 3px;
     }
+
   </style>
 </head>
-<body>
-  <div id="pay_table"></div>
-  <div id="total"></div>
+<br>
+  <div id="pay_table"></div></br>
+  <div id="total" ></div>
 </body>
 <script>
   window.onload = () => {
@@ -76,7 +79,7 @@
         const cellsData = [item.id, item.username, item.work_time, item.per_pay, baseAmount, overtimeAllowance, totalAmount, taxAmount,netAmount];
         cellsData.forEach((data, index) => {
           const cell = document.createElement("td");
-          cell.textContent = index > 1 ? data.toLocaleString() : data;;
+          cell.textContent = typeof data == "number" ? data.toLocaleString() : data;;
           cell.style.textAlign = data != item.username ? "right" : "left";
           row.appendChild(cell);
         });

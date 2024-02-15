@@ -1,6 +1,6 @@
 // index.js
 import fs from 'fs'
-import path, { resolve } from 'path'
+import path, { dirname, resolve } from 'path'
 import express, { response } from 'express'
 import ejs from 'ejs'
 import multer from 'multer'
@@ -36,11 +36,16 @@ let app = express(); // express 객체 생성, 함수를 통해서 생성하기 
 // 이설정은 지금 index.js 파일이 있는 위치에 views라는 폴더를 두고 그 폴더안에 ejs를 두겟다는 의미이다.
 
 // type :"module" 을 설정하면 __dirname 그냥 사용불가 변수설정해줘야함.
-const __dirname = path.resolve()
+const __dirname = path.resolve() //에플리케이션이 가동중인 폴더 경로를 준다.
+//C:\Users\user\Desktop\하나은행실습\nodejs_workspace\myapp0214 < = 이부분을 주는것임.
+
 app.set("views",path.join(__dirname,"views"))
 app.set("view engine","ejs") // view엔진은 ejs엔진을 사용하겠다는 의미이다.
 //  이 두개의 설정을 하고나면 response에 render함수를 사용할 수 있다.
 // render 가 views 폴더에서 확장자가 ejs인 파일을 찾아서 읽어 클라이언트로 보낸다.
+
+app.use(express.static(dirname+"/public")); // js, image, css 등등 static 자료를 두는곳.
+app.use("/newimage",express.static(dirname+"/uploads")); // 업로드 한것을 내보내려고한다.
 
 // 미들웨어 - 다양한 미들웨어를 거치면서 데이터가 정제되어서 온다.
 // post 방식으로 전송했을때 request객체에 body를 붙혀준다( 데이터를 쉽게 가져올 수 있게 도와준다.)

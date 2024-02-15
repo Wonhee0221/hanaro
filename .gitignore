@@ -1,5 +1,9 @@
 **/node_modules/
+**/package-lock.json/
+**/package.json/
 nodejs_workspace/myhome2/package-lock.json
 nodejs_workspace/myhome2/package.json
 nodejs_workspace/myapp0214/package-lock.json
 nodejs_workspace/myapp0214/package.json
+nodejs_workspace/myapp0215/package-lock.json
+nodejs_workspace/myapp0215/package.json

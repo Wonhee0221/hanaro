@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>게시판</h1>
+  <table>
+    <% for (board of boardList) {%>
+      <tr>
+        <td><%=board.id%></td>
+        <td><a href="/board/view/<%=board.id%>"><%=board.title%></a></td>
+        <td><%=board.writer%></td>
+        <td><%=board.wdate%></td>
+      </tr>
+      <%}%>
+  </table>
+  <a href="/board/write">글쓰기</a>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <h1>SPA(Single Pape Application)</h1>
+  <hr>
+  <div id="root"></div><!-- 이게 가장 먼저써야한다. DOM 구조라서-->
+  <script type="text/babel"> //"text/babel" 꼭 있어야한다.
+
+      ReactDOM.render(
+         //첫번째 매개변수 : 출력할 태그들- 트리구조의 태그집합 
+        // 두개 이상 태그를 넣으려면 div 태그안에다 감싸줘야한다.
+        <div>
+          <InputTest/>
+        </div>,
+         document.getElementById("root") //두번째 매개변수 : 기준점이 되는 태그 객체, 시작태그 객체
+      );
+      function InputTest(){
+        const [value,setValue] = React.useState("페브리즈");
+
+        const valueChange = (event)=>{ //이벤트가 발생한 객체를 매개변수로 전달해준다.
+          console.log(event.target.value)
+          setValue( event.target.value);
+        }
+        return(
+          <div>
+            <input type="text" value={value} onChange={valueChange}/>
+            </div>
+        )
+      }
+    </script>
+</body>
+</html>

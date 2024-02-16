@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <h1>이벤트 처리</h1>
+  <hr>
+  <div id="root"></div>
+  <script type="text/babel">
+      ReactDOM.render(
+        <div>
+          <MyCount/>
+        </div>,
+         document.getElementById("root")
+      );
+      function MyCount(){
+        const [count, setCount] = React.useState("0"); //받아 오는거다.
+        const setIncrease = ()=>{
+          setCount(parseInt(count)+1)
+        }
+        const setDecrease = ()=>{
+          setCount( parseInt(count)-1)
+        }
+        return(
+          <div>
+            <h1>{count}</h1>
+            <button type="button" onClick={setIncrease}>값 증가</button>
+            <button type="button" onClick={setDecrease}>값 감소</button>
+          </div>
+        )
+      }
+    </script>
+</body>
+</html>

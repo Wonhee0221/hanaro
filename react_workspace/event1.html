@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <h1>이벤트 처리</h1>
+  <hr>
+  <div id="root"></div>
+  <script type="text/babel">
+      ReactDOM.render(
+        <div>
+          <MyComponent/>
+        </div>,
+         document.getElementById("root")
+      );
+      // 함수기반 컴포넌트  - 이벤트처리
+      function MyComponent(){
+        //onClick = {함수주소} - 이런식으로 람다를 사용해서 넘겨줘야한다.
+        const click = ()=>{
+          alert("클릭")
+        }
+        return(
+          <div>
+            <button type="button" onClick={click}>이벤트 발생</button> <br/>
+
+            <button type="button" onClick={()=>{alert("이벤트발생3")}}>이벤트 발생3</button> <br/>
+          </div>
+        )
+      }
+    </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <h1>TodoList만들어보자</h1>
+  <hr>
+  <div id="root"></div>
+  <script type="text/babel"> 
+        let todoList =[
+        {id:1,todo:"react공부하기"},
+        {id:2,todo:"수영보기"},
+        {id:3,todo:"자습하기"},
+        {id:4,todo:"운동하기"},
+        {id:5,todo:"친구만나기"}
+      ];
+
+      ReactDOM.render(
+        <div>
+          {/* Props => 키:"값" 키={변수명} 자식컴포넌트가 props파라미터로 전달받는다*/}
+          <ListTodo todoList={todoList}/>
+        </div>,
+         document.getElementById("root")
+      );
+
+
+      //props라는 파라미터가 항상있다.
+      // 부모컴포넌트가 자식컴포넌트한테 데이터를 전달할 수 있다.
+      function ListTodo(props){
+        return(
+          <div>
+            <h1>할일</h1>
+            <ul>
+              {/* <li>{props.todoList[0].id} {props.todoList[0].todo}</li>
+              <li>{props.todoList[1].id} {props.todoList[1].todo}</li>*/}
+              {props.todoList.map((item)=>{
+                return (
+                  <li>{item.id} {item.todo}</li>
+                )
+              })}
+              
+            </ul>
+          </div>
+        )
+      }
+    </script>
+</body>
+</html>

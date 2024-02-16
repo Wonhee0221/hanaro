@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <h1>이벤트 처리</h1>
+  <hr>
+  <div id="root"></div>
+  <script type="text/babel">
+      ReactDOM.render(
+        <div>
+          <MyComponent/>
+          <MyComponent/>
+        </div>,
+         document.getElementById("root")
+      );
+      // 함수기반 컴포넌트  - 이벤트처리
+      function MyComponent(){
+        //자체적으로 state라는 게 있다.
+        //상태정보 변수들을 state에 저장하고 이 변수값을 바꾸면 state를 확인해서
+        /// 바뀐부분만 다시렌더링을해준다.
+        //state가 클래스 기반컴포넌트에만 존재했음
+        // 함수기반 컴포넌트도 있었는데 d예잔에는 state를 사용을 못함
+        // 자신한테있었던 일을 하지못한다. 기능이 간단한거는 함수로 복잡한거는 클래스를 사용한다.
+        // 3년전에 hook을 만들었다.
+
+        // state 한테 변수 만들고 그 주소를 주어라
+        // React.useState(초기데이터); state 공간에 초기데이터
+        // 저장공간을 만들고 변수 주소를 준다. 주소공간의 값을 바꿀 수 있는 함수도 제공한다.
+        // 가급적 set변수면 setName 변수명의 첫글자는 대문자 - 카멜표기법 사용
+        // 반환값이 [] 첫번째요소는 값이 저장된 공간에 대한 정보
+                      //  두번째 요소는 값이저장된 공간에 접근할 수 있는 함수주소
+        const [name, setName] = React.useState("홍길동"); //받아 오는거다.
+        const [age, setAge] = React.useState(24);
+        console.log(React.useState(0))
+        // 아래처럼 작성하면 안된다. 함수호출하다 말고 setName 함수가 무한렌더링 상태가 된다.
+        // 직접호출 x
+        // setName("임꺽정")
+        // setAge(23)
+
+        const setValue = ()=>{
+          setName("임꺽정")
+          setAge(23);
+        }
+        return(
+          <div>
+            <h1>{name} {age}</h1>
+            <div>{name+"님의 나이는 "+age+" 입니다"}</div>
+            <button type="button" onClick={setValue}>값 바꾸기</button>
+          </div>
+        )
+      }
+    </script>
+</body>
+</html>

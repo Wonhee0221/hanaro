@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <h1>props : 데이터 부모 컴포터넌트가 => 자식컴포넌트</h1>
+  <p>데이터 부모 => 자식(단방향), 자식입장에서 무모의 함수를 호출하는 방식으로 부모한테
+    변화에 대한 알림을 준다
+    props 는 <컴포넌트 key1="값" key2={변수} key3={함수}/>
+    props 는 자체는 json <br/>
+    props.key1 , props.key2...<br/>
+
+    const{name,age,adress} = {name:"홍길동",age:12,adress:"서울시"}
+    자식컴포넌트 입장에서 porps 형태로 받을 수도 있고 <br/>
+    자식컴포넌트 입장에서 ({name,age,address})<br/>
+  </p>
+  <hr>
+  <div id="root"></div>
+  <script type="text/babel">
+
+      ReactDOM.render(
+        <div>
+          <Parent/>
+        </div>,
+         document.getElementById("root") 
+      );
+      function Parent(){
+        const [key2,setKey2] = React.useState("새로운키 ");
+        const parentFunc = ()=>{
+          alert("부모함수호출")
+        }
+        return(
+          <div>
+          <Child1 key1="test" parentFunc={parentFunc}/>
+          <Child2 key1="test" key2={key2}/>
+        </div>
+        )
+      }
+      function Child1(props){
+        return(
+          <div>
+            <h1>{props.key1}</h1>
+            <button type="button" onClick={props.parentFunc}>뉴루가</button>
+            </div>
+          
+          )
+      }
+      function Child2({key1,key2}){
+        return(
+          <div>
+          <h1 style={{color:"red"}}>{key1}</h1>
+          <h1>{key2}</h1>
+        </div>
+          )
+      } 
+
+         </script>
+</body>
+</html>

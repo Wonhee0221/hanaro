@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <h1>함수 기반 컴포넌트</h1>
+  <hr>
+  <div id="root"></div><!-- 이게 가장 먼저써야한다. DOM 구조라서-->
+  <script type="text/babel"> //"text/babel" 꼭 있어야한다.
+  // 사용자 정의 컴포넌트를 만든다. React.component를 상속받는다.
+  // 반드시 오버라이딩 함수 = render 를 해주어야한다. UI(user interface)을 구성한다. 즉 태그를 출력하는것
+    function AppClass(){
+      const tilte = "사용자정의컴포넌트"
+        return (
+          // style을 줄때 {}안에 코드를 두어야한다. style은 일반 html과 다르다.
+          // 속성중에 - 들어가는 것들 (snake 표기법)은 카멜표기법으로 바꾸어서 사용한다.
+          //  예) background-color => backgroundColor
+          // 함수안에 직접 넣을때만, 별도의 css파일 일때는 기존과 동일하다.
+          //jsx문법 규칙을 따른다. 반드시 트리구조여야한다.
+         <div>
+            <h3 style={{color:"red"}}>{tilte}</h3>
+          </div>
+        )
+      }
+    
+      ReactDOM.render(
+        <div>
+          <AppClass/>
+          <AppClass/><AppClass/>
+          <AppClass/>
+          <AppClass/>
+          <AppClass/>
+        </div>,
+         document.getElementById("root") //두번째 매개변수 : 기준점이 되는 태그 객체, 시작태그 객체
+      );
+    </script>
+</body>
+</html>

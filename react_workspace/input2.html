@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <h1>인풋값 여러개 하기  </h1>
+  <hr>
+  <div id="root"></div>
+  <script type="text/babel"> 
+
+      ReactDOM.render(
+        <div>
+          <InputTest/>
+        </div>,
+         document.getElementById("root") 
+      );
+      function InputTest(){
+        const [value1,setValue1] = React.useState("페브리즈");
+        const [value2,setValue2] = React.useState("샤프란");
+
+        const valueChange = (event)=>{
+          // console.log(event.target.value)
+          // setValue( event.target.value);
+          if (event.target.id == "value1")
+            setValue1( event.target.value)
+          else if  (event.target.id == "value2")
+            setValue2( event.target.value)
+        }
+        return(
+          <div>
+            <input type="text" id="value1" value={value1} onChange={valueChange}/> <br/>
+            <input type="text" id="value2" value={value2} onChange={valueChange}/>
+            </div>
+        )
+      }
+    </script>
+</body>
+</html>

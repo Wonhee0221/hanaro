@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <h1>이벤트 처리</h1>
+  <hr>
+  <div id="root"></div>
+  <script type="text/babel">
+      ReactDOM.render(
+        <div>
+          <MyCalculator/>
+        </div>,
+         document.getElementById("root")
+      );
+      function MyCalculator(){
+        const [value1,setValue1] = React.useState();
+        const [value2,setValue2] = React.useState();
+        const [result, setResult] = React.useState(0); //받아 오는거다.
+
+        const valueChange = (event)=>{
+          if (event.target.id == "value1")
+            setValue1( event.target.value)
+          else if  (event.target.id == "value2")
+            setValue2( event.target.value)
+        }
+
+        const setIncrease = ()=>{
+          setResult(parseInt(value1)+parseInt(value2))
+        }
+        const setDecrease = ()=>{
+          setResult( parseInt(value1)-parseInt(value2))
+        }
+        const setMultiplication = ()=>{
+          setResult( parseInt(value1)*parseInt(value2))
+        }
+        const setDivision = ()=>{
+          setResult( parseInt(value1)/parseInt(value2).toFixed(2))
+        }
+        return(
+          <div>
+            x: <input type="text" id="value1" value={value1} onChange={valueChange}/>
+            y: <input type="text" id="value2" value={value2} onChange={valueChange}/>
+            <br/>
+            <div style={{border: "solid 1px", width:"300px"}}>{result}</div>
+            <br/> 
+            <button type="button" onClick={setIncrease} style={{border: "solid 1px", width:"50px"}}>+</button>
+            <button type="button" onClick={setDecrease} style={{border: "solid 1px", width:"50px"}}>-</button>
+            <button type="button" onClick={setMultiplication} style={{border: "solid 1px", width:"50px"}}>x</button>
+            <button type="button" onClick={setDivision} style={{border: "solid 1px", width:"50px"}}>%</button>
+          </div>
+        )
+      }
+    </script>
+</body>
+</html>

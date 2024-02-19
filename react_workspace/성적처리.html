@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+ <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+ <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        ReactDOM.render(
+            <div>
+              <App/>
+            </div>
+            ,document.getElementById('root')
+        ); 
+      function App(){
+        const [uesrInfoList,setUesrInfoList] = React.useState([])
+        const [userInfo, setUserInfo] = React.useState({name:"",kor:"",eng:"",mat:""});
+        const {name,kor,eng,mat} = userInfo 
+        const nameChange=(e)=>{setUserInfo({...userInfo,name:e.target.value})}
+        const korChange=(e)=>{setUserInfo({...userInfo,kor:e.target.value})}
+        const engChange=(e)=>{setUserInfo({...userInfo,eng:e.target.value})}
+        const matChange=(e)=>{setUserInfo({...userInfo,mat:e.target.value})}
+        const append=()=>{
+          setUesrInfoList(uesrInfoList.concat(userInfo))
+          setUserInfo({name:"",kor:"",eng:"",mat:""})
+          window.document.querySelector("#name").focus()
+        }
+        
+        return(
+          <div>
+            이름 : <input type="text" id="name" onChange={nameChange} value={name}/><br/>
+            국어: <input type="text" onChange={korChange} value={kor}/><br/>
+            영어 : <input type="text" onChange={engChange} value={eng}/><br/>
+            수학 : <input type="text" onChange={matChange} value={mat}/><br/>
+
+      
+            <button type="button" onClick={append}>추가</button>
+            <hr/>
+            <table>
+              {
+              uesrInfoList.map((item,key)=>{
+                let total = parseInt(item.kor) + parseInt(item.eng) + parseInt(item.mat);
+                let avg = (total/3).toFixed(2);
+                return(
+                  <tr key={key}>
+                    <td>이름 : {item.name}</td>
+                    <td>국어 : {item.kor}</td>
+                    <td>영어 : {item.eng}</td>
+                    <td>수학 : {item.mat}</td>
+                    <td>총점 : {total}</td>
+                    <td>평균 : {avg}</td>
+                    </tr>
+                )
+              })
+            }
+            </table>
+            
+          </div>
+        )
+      }
+    //   function Child(props){
+    //   return(
+    //     <div>
+    //       <h4>자식컴포넌트 : {props.count}</h4>
+    //       <button type="button" onClick={ props.increase }>증가</button>
+    //       <button type="button" onClick={ props.decrease }>감소</button>  
+    //     </div>
+    //   )
+    //  }                       
+    </script>
+</body>
+</html>
+

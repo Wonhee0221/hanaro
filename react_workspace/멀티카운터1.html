@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>모던 스크립트로 카운터만들기.</h1>
+  <div>
+    <div id="counter">0</div>
+    <button type="button" id="btnIncrease">+</button>
+    <button type="button" id="btrDecrease">-</button>
+  </div>
+
+  <div>
+    <div id="counter2">0</div>
+    <button type="button" id="btnIncrease2">+</button>
+    <button type="button" id="btrDecrease2">-</button>
+  </div>
+
+</body>
+</html>
+<script>
+  const counter = document.querySelector("#counter");
+  const btnIncrease = document.querySelector("#btnIncrease");
+  const btrDecrease = document.querySelector("#btrDecrease");
+
+  btnIncrease.onclick = ()=>{
+    counter.innerHTML=parseInt(counter.innerHTML)+1
+  }
+  btrDecrease.onclick = ()=>{
+    counter.innerHTML=parseInt(counter.innerHTML)-1
+  }
+  const counter2 = document.querySelector("#counter2");
+  const btnIncrease2 = document.querySelector("#btnIncrease2");
+  const btrDecrease2 = document.querySelector("#btrDecrease2");
+
+  btnIncrease2.onclick = ()=>{
+    counter2.innerHTML=parseInt(counter2.innerHTML)+1
+  }
+  btrDecrease2.onclick = ()=>{
+    counter2.innerHTML=parseInt(counter2.innerHTML)-1
+  }
+</script>

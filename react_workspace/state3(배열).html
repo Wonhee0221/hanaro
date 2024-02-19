@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+ <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+ <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        ReactDOM.render(
+            <div>
+              <App/>
+            </div>
+            ,document.getElementById('root')
+        ); 
+        function App(){
+          const [arr, setArr] = React.useState([
+            "사과","귤","오렌지"
+          ]) // 배열객체를 만든다.
+          // 배열객체 잠조변수와 그 변수의 값을 바꾸는 함수를 받아온다.
+          const [fruit, setFruit] = React.useState("")
+          const focusMove = React.useRef(null);
+
+          const change = (e)=>{
+            // e : 이벤트가 발생한 객체의 모든 정보를 가지고 오는 파라미터
+            // 이벤트 핸들러는 누구나 갖고 있는데 평상시에는 잘 안씀
+            // click이벤트 같은 경우는 단순해서 별도의 정보가 필요없지만
+            // change이벤트는 키보드 눌린 값들을 갖고 있어야한다.
+            setFruit(e.target.value); // 반드시 set함수로 바꾸어야한다<div class=""></div>
+          }
+          const append = (e) =>{
+            // push함수 사용불가. arr.push( fruit ) 다른 주소에 들어가기 때문에 안됌 set을 사용해야해서
+            //state영역에 추가가 안되기 때문에 호출도 안됌.
+            // 새로운 배열을 만들어서 보내야한다. 
+            setArr(arr.concat(fruit))
+            setFruit(""); // input 태그 안에있는 내용을 지워줘야함.
+            //focusMove.current.focus();
+            // useRef 가 input태그 자체를 가져온다.
+            window.document.querySelector("#input").focus(); // 앞에 window 생략 불가
+          };
+          return(
+            <div>
+              <input type="text" id="input" ref={focusMove} onChange={change} value={fruit}/>
+              <button type="button" onClick={append}>추가</button><br/>
+              <ul>
+                {
+                  arr.map((itme,i)=>{
+                  return( 
+                    <li key={i}>{itme}</li>
+                    )
+                    }
+                  )}   
+              </ul>
+            </div>
+          )
+        }
+                                
+    </script>
+</body>
+</html>
+

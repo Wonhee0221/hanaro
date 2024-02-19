@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <!-- 인터넷에서 코드를 가져올때 클래스기반보단 함수기반을 가져오는게 좋다! -->
+  <h1>클래스기반컴포넌트2</h1>
+  <hr>
+  <div id="root"></div>
+  
+  <script type="text/babel">
+    //React.Component 를 상속바당서 render함수를 반드시 오버라이딩 해줘야한다.
+    //class는 미리 정의되어야 한다.
+    class MyComponent extends React.Component{
+         //모던스크립트 클래스에 멤버변수들앞에 아무 키워드도 못붙인다.
+        render(){
+          // 지역변수를 지정한다. => JSON객체이어야 한다.
+          // 지역변수는 let,const를 붙혀줘야한
+          let style={
+            color:"red",
+            backgroundColor:"#ffff00",
+            padding:"10px"
+          }
+          const userInfo={
+            name:"홍길동",
+            age:23
+          }
+          return(
+            <div>
+              <h1 style={style}>MyComponent</h1>
+              <h3>{userInfo.name}</h3>
+              <h3>{userInfo.age}</h3>
+            </div>
+          )
+        }
+      }
+      ReactDOM.render(
+        <div>
+          <MyComponent/>
+        </div>,
+         document.getElementById("root") //두번째 매개변수 : 기준점이 되는 태그 객체, 시작태그 객체
+      );
+
+    </script>
+</body>
+</html>

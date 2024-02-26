@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+ <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+ <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+    <div id="root"></div>
+<!-- 컨텍스트에 값도 주고 이 값을 업데이트 할수있는 함수도 같이 제공
+     ContextProvider 새로 만들기. 시스템이 제공하는 Provider는 값 넣기만 가능하다.
+    카운터를 제공하는 Provider만들기 -->
+    <script type="text/babel">
+        let CounterContext = React.createContext();
+        // CouterContext.Provide를 제공해주는데  값만 설정
+        ReactDOM.render(
+          
+            <div>
+              <App/>
+            </div>
+            ,document.getElementById('root')
+        ); 
+
+        /*
+        <MyContext.Provider value={{userid:test,username:"홍길동"}}
+            <GrandParent/>
+        </MyContext.Provider>
+        */
+      //  함수니까 state도 둘수 있고 내부함수도 만들 수 있다.
+
+      function CounterProvider({children}){
+        const [count, setCount] = React.useState(0);
+        const increase = ()=>{setCount(count+1)}
+        const decrease = ()=>{setCount(count-1)}
+
+        // count와 함수 2개를 넘긴다.
+        const value = {"count":count, "increase":increase, "decrease":decrease};
+        return(
+          <CounterContext.Provider value={value}>
+            {children}
+          </CounterContext.Provider>
+          )
+      }
+      function App(){
+        return(
+          <div>
+            <CounterProvider>
+              <Child1/>
+            </CounterProvider>
+          </div>
+        )
+      }  
+      function Child1(){
+        let value = React.useContext(CounterContext)
+        return(
+          <div>
+            <h1>Child1</h1>
+            <h3>현재카운트 : value:{value.count}</h3>
+            <Child2/>
+            </div>
+        )
+      } 
+      function Child2(){
+        let value = React.useContext(CounterContext)
+        return(
+          <div>
+            <button type="button" onClick={value.increase}>증가</button>
+            <button type="button" onClick={value.decrease}>감소</button>
+            </div>
+        )
+      }               
+    </script>
+</body>
+</html>
+

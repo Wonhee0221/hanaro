@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        let LogonContext = React.createContext({ userid: "test1", username: "홍길동", isLogin: true });
+
+        function App() {
+            return (
+                <div>
+                  {/* Provider : 컨텍스트에 값을 공급한다. value속성에 값 전달하기
+                  style={ { } } json객체 담듯이 동일하게
+                  value속성에 = {json객체}
+                  */}
+                    <LogonContext.Provider value={{ userid: "test1", username: "홍길동", isLogin: true }}>
+                        <Child1 />
+                    </LogonContext.Provider>
+                </div>
+            )
+        }
+
+        function Child1() {
+            // useContext 훅을 사용하여 context 값 가져오기
+            const value = React.useContext(LogonContext);
+
+            return (
+                <div>
+                    <h1> Child1 </h1>
+                    아이디: {value.userid}, 이름: {value.username}, 로그온 여부: {value.isLogin ? "Logon" : "Logout"} <br />
+                    <Child2 />
+                </div>
+            )
+        }
+
+        function Child2() {
+            // useContext 훅을 사용하여 context 값 가져오기
+            const value = React.useContext(LogonContext);
+
+            return (
+                <div>
+                    <h1> Child2 </h1>
+                    아이디: {value.userid}, 이름: {value.username}, 로그온 여부: {value.isLogin ? "Logon" : "Logout"}
+                </div>
+            )
+        }
+
+        ReactDOM.render(
+            <div>
+                <App />
+            </div>,
+            document.getElementById('root')
+        );
+    </script>
+</body>
+</html>

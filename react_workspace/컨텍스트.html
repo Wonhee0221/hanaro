@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+ <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+ <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+ <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        ReactDOM.render(
+            <div>
+              <App userid="test1" username="홍길동:" isLogin={true}/>
+            </div>
+            ,document.getElementById('root')
+        ); 
+      // 전역변수 ==> cli에서는 파일이 쪼개진다.
+      let LogonContext = React.createContext(); //전역 공간을 만든다. props는 부모자식간에서만 사용가능한데
+      // props의 복잡성을 제거하기위해 사용된다
+      // App - 시작 컴포넌트, props가 당연히 있음{userid, username, isLogin}
+      function App({userid, username, isLogin}){
+        return(
+          <div>
+            아이디 : {userid}, 이름:{username}, 로그온 여부:{isLogin?"Logon":"Logout"}
+            <Child1 userid={userid} username={username} isLogin={isLogin}/>
+          </div>
+        )
+      }
+    function Child1({userid, username, isLogin}){
+    return(
+      <div>
+        <h1> Child1 </h1>
+        아이디 : {userid}, 이름:{username}, 로그온 여부:{isLogin?"Logon":"Logout"} <br/>
+        <Child2 userid={userid} username={username} isLogin={isLogin}/>
+        </div>
+    )
+    }         
+    function Child2({userid, username, isLogin}){
+    return(
+      <div>
+        <h1> Child2 </h1>
+        아이디 : {userid}, 이름:{username}, 로그온 여부:{isLogin?"Logon":"Logout"}
+        </div>
+    )
+    }             
+    </script>
+</body>
+</html>
+

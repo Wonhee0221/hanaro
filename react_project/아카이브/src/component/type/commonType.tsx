@@ -12,14 +12,34 @@ export type CounterAction =
   // 타입의 경우는 type앞에 직a접 기술해야 한다.
 
 export type CalculatorStateType={
-  x:number;
-  y:number;
-  result:number;
+  x:string;
+  y:string;
+  result:string;
   operator:string;
 }
 export type CalculatorAction = 
-                        {type:"ADD"}
-                        |{type:"SUB"}
-                        |{type:"DIV"}
-                        |{type:"MUL"}
-                        |{type:"RESET", x:0,y:0,result:0,operator:""}
+                        {type:"ADD",x:string,y:string}
+                        |{type:"SUB",x:string,y:string}
+                        |{type:"DIV",x:string,y:string}
+                        |{type:"MUL",x:string,y:string}
+                        |{type:"RESET", x:string,y:string,result:number,operator:string}
+
+export type CalculatorAction2 = 
+                        {type:"ADD",  value:CalculatorStateType}
+                        |{type:"SUB", value:CalculatorStateType}
+                        |{type:"DIV", value:CalculatorStateType}
+                        |{type:"MUL", value:CalculatorStateType}
+                        |{type:"RESET", value:CalculatorStateType}
+
+// 꼭 타입마다 만드시 export 시키자 
+export type StateType={
+  userid:string;
+  username:string;
+  isLogon:boolean;
+
+}
+
+export type LogonAction=
+  {type:"RESET", value:StateType}
+  |{type:"LOGON", value:StateType}
+  |{type:"LOGOUT", value:StateType}

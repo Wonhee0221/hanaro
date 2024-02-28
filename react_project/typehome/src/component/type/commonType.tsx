@@ -43,3 +43,38 @@ export type LogonAction=
   {type:"RESET", value:StateType}
   |{type:"LOGON", value:StateType}
   |{type:"LOGOUT", value:StateType}
+
+export type geoType={
+    lat:string,
+    lng:string
+  }
+export type addressType={
+  street:string,
+  suite: string,
+  city: string,
+  zipcode:string,
+  geo: geoType
+}
+export type companyType={
+  name: string,
+  catchPhrase:string,
+  bs: string
+}
+
+export type PersonInfoType={
+  id: number,
+  name: string,
+  username: string,
+  email: string,
+  address: addressType,
+  phone: string,
+  website:string,
+  company: companyType
+}
+export type PhotoType={
+  "albumId": number;
+  "id": number;
+  "title": string;
+  "url": string;
+  "thumbnailUrl": string;
+}

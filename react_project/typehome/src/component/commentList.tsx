@@ -36,7 +36,10 @@ function CommentList() {
       });
 
     return () => {
-      controller.abort();
+      if (controller) {
+        controller.abort();
+      }
+      console.log("eeee")
     };
   }, [id]);
 

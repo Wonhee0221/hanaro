@@ -12,11 +12,7 @@ type PostItemType={
 
 function PostList() {
   const [posts, setPosts] = useState<PostItemType[]>([]);
-  const [selectItem, setSelectItem] = useState<PostItemType>(() => {
-    // 페이지가 처음 마운트될 때, localStorage에서 저장된 값을 읽어옴
-    const storedItem = getStateFromLocalStorage("selectedComment");
-    return storedItem || { id: -1, postId: 0, name: "", body: "", email: "" };
-  });
+  const [selectItem, setSelectItem] = useState<PostItemType>({id:-1,userId:0,title:"",body:""});
   let context = useContext(AppContext)
   useEffect(()=>{
     const controllor = new AbortController()
@@ -41,7 +37,7 @@ function PostList() {
   
   const itemClick=(item:PostItemType)=>{
     setSelectItem({...item});//JSON으로 저장하자 
-    localStorage.setItem("selectedComment", JSON.stringify(item));
+    console.log( item.id, "selected");
   }
 const navigate = useNavigate()
 const btnClick = ()=>{
